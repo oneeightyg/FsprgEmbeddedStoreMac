@@ -13,18 +13,17 @@
 
 + (FsprgOrder *)orderFromData:(NSData *)aData
 {
-	NSPropertyListFormat *format = nil;
 #if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_6
 	NSDictionary *aDict = [NSPropertyListSerialization propertyListFromData:aData
 													   mutabilityOption:NSPropertyListImmutable
-													   format:format 
+													   format:NULL
 													   errorDescription:NULL];
 		
 #else
 	NSDictionary *aDict = [NSPropertyListSerialization propertyListWithData:aData
 																	options:NSPropertyListImmutable
-																	 format:format
-																	  error:nil];
+																	 format:NULL
+																	  error:NULL];
 #endif
 	
 	return [[[FsprgOrder alloc] initWithDictionary:aDict] autorelease];
