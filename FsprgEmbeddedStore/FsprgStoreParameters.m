@@ -95,6 +95,11 @@ static NSMutableDictionary *keyPathsForValuesAffecting;
 	return self;
 }
 
+- (void)setRaw:(NSMutableDictionary *)raw
+{
+    _raw = [raw mutableCopy];
+}
+
 - (NSURLRequest *)toURLRequest
 {
 	NSURL *toURL = [self toURL];
