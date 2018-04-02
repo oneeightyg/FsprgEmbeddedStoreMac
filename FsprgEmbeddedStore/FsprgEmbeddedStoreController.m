@@ -11,7 +11,9 @@
 #import "FsprgOrderDocumentRepresentation.h"
 
 // We don't retrieve SSL certificates below OSX 10.6
-#define RETRIEVE_SSL_CERTIFICATES defined(MAC_OS_X_VERSION_10_6) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_6
+#if defined(MAC_OS_X_VERSION_10_6) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_6
+#define RETRIEVE_SSL_CERTIFICATES 1
+#endif
 
 @interface FsprgEmbeddedStoreController ()
 
@@ -325,7 +327,7 @@
 
 #pragma mark - WebResourceLoadDelegate
 
-#if RETRIEVE_SSL_CERTIFICATES
+#ifdef RETRIEVE_SSL_CERTIFICATES
 - (BOOL)webView:(WebView *)sender resource:(id)identifier canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace forDataSource:(WebDataSource *)dataSource
 {
     return TRUE;
