@@ -313,10 +313,10 @@
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
 {
-	NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0,0,0,0)
-										 styleMask:(NSClosableWindowMask|NSResizableWindowMask)
-										 backing:NSBackingStoreBuffered
-										 defer:NO];
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0,0,0,0)
+                                                   styleMask:(NSWindowStyleMaskClosable|NSWindowStyleMaskResizable)
+                                                     backing:NSBackingStoreBuffered
+                                                       defer:NO];
 	WebView *subWebView = [[[WebView alloc] initWithFrame:NSMakeRect(0,0,0,0)] autorelease];
 	[window setReleasedWhenClosed:TRUE];
 	[window setContentView:subWebView];
